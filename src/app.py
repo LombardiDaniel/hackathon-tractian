@@ -15,17 +15,19 @@ from main import (
 from services import MongoDBDocumentStore
 
 app = Flask(__name__)
-CORS(
-    app,
-    resources={
-        r"/*": {
-            "origins": "*",
-            "allow_headers": "*",
-            "expose_headers": "*",
-            "allow_methods": "*",
-        }
-    },
-)
+# CORS(
+#     app,
+#     resources={
+#         r"/*": {
+#             "origins": "*",
+#             "allow_headers": "*",
+#             "expose_headers": "*",
+#             "allow_methods": "*",
+#         }
+#     },
+# )
+cors = CORS(app)
+app.config["CORS_HEADERS"] = "Content-Type"
 MONGODB_ATLAS_CLUSTER_URI = os.getenv("MONGODB_ATLAS_CLUSTER_URI")
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -52,6 +54,7 @@ asked = []
 # }
 
 
+@cross_origin()
 @app.route("/ask", methods=["POST"])
 def ask():
     data = request.json
