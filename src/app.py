@@ -26,7 +26,7 @@ app = Flask(__name__)
 #         }
 #     },
 # )
-cors = CORS(app)
+# cors = CORS(app)
 # app.config["CORS_HEADERS"] = "Content-Type"
 MONGODB_ATLAS_CLUSTER_URI = os.getenv("MONGODB_ATLAS_CLUSTER_URI")
 
