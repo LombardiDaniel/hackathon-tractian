@@ -4,6 +4,7 @@ from uuid import uuid4
 
 import openai
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from main import (
     formatar_resultado,
@@ -14,6 +15,17 @@ from main import (
 from services import MongoDBDocumentStore
 
 app = Flask(__name__)
+CORS(
+    app,
+    resources={
+        r"/*": {
+            "origins": "*",
+            "allow_headers": "*",
+            "expose_headers": "*",
+            "allow_methods": "*",
+        }
+    },
+)
 MONGODB_ATLAS_CLUSTER_URI = os.getenv("MONGODB_ATLAS_CLUSTER_URI")
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
