@@ -1,0 +1,11 @@
+version: "3.2"
+
+services:
+  app:
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - 5555:5555
+# 169.150.0.99:5555/ask
