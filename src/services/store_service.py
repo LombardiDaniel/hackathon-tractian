@@ -4,7 +4,6 @@ import uuid
 import openai
 import requests
 from bson.objectid import ObjectId
-from langchain.schema import Document
 from pymongo import MongoClient
 
 from models import Chunk
