@@ -4,7 +4,6 @@ from uuid import uuid4
 
 import openai
 from flask import Flask, jsonify, make_response, request
-from flask_cors import CORS
 
 from main import (
     formatar_resultado,
@@ -13,6 +12,9 @@ from main import (
     remove_negative_values,
 )
 from services import MongoDBDocumentStore
+
+# from flask_cors import CORS
+
 
 app = Flask(__name__)
 # CORS(
@@ -57,6 +59,7 @@ asked = []
 # @cross_origin()
 @app.route("/ask", methods=["POST"])
 def ask():
+    global asked
     data = request.json
     question = data["message"]
 
