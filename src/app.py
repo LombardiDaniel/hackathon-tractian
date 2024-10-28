@@ -3,7 +3,7 @@ from collections import OrderedDict
 from uuid import uuid4
 
 import openai
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, make_response, request
 from flask_cors import CORS
 
 from main import (
@@ -108,7 +108,14 @@ def ask():
         {"role": "assistant", "content": rep_string},
     )
 
-    return jsonify({"reply": rep_string})
+    response = make_response({"reply": rep_string})
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "*")
+    response.headers.add("Access-Control-Allow-Methods", "*")
+
+    return response
+
+    # return jsonify({"reply": rep_string})
 
 
 if __name__ == "__main__":
