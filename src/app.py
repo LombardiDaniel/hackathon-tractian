@@ -27,7 +27,7 @@ app = Flask(__name__)
 #     },
 # )
 cors = CORS(app)
-app.config["CORS_HEADERS"] = "Content-Type"
+# app.config["CORS_HEADERS"] = "Content-Type"
 MONGODB_ATLAS_CLUSTER_URI = os.getenv("MONGODB_ATLAS_CLUSTER_URI")
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -54,7 +54,7 @@ asked = []
 # }
 
 
-@cross_origin()
+# @cross_origin()
 @app.route("/ask", methods=["POST"])
 def ask():
     data = request.json
