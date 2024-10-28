@@ -113,7 +113,7 @@ def ask():
         {"role": "assistant", "content": rep_string},
     )
 
-    response = make_response({"reply": rep_string})
+    response = make_response(jsonify({"reply": rep_string}))
     response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Headers", "*")
     response.headers.add("Access-Control-Allow-Methods", "*")
