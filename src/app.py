@@ -17,12 +17,17 @@ STORE_SERVICE = MongoDBDocumentStore(
     MONGODB_ATLAS_CLUSTER_URI, "hackathon-tractian", "hackathon-tractian-vectorstores"
 )
 
+# {
+#     "message": ""
+# }
+# {
+#     "reply": "STRING",
+# }
 
-@app.route("/search", methods=["POST"])
-def search():
+
+@app.route("/ask", methods=["POST"])
+def ask():
     data = request.json
-    assuntos = data.get("assuntos", [])
-    resultados = data.get("resultados", [])
 
     system_prompt = genprompt(assuntos, resultados)
 

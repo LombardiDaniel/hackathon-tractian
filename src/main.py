@@ -91,6 +91,9 @@ def main():
             {"role": "user", "content": question},
         )
         messages = [_ for _ in asked]
+        if len(asked) >= 10:
+            asked = asked[-10:]
+
         messages.append({"role": "system", "content": system_prompt})
 
         # print(messages)
