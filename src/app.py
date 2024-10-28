@@ -63,6 +63,8 @@ def ask():
     data = request.json
     question = data["message"]
 
+    print(f"RCVD::{question}")
+
     results: list[dict] = STORE_SERVICE.vector_search([NR12_ID], question)
     pages: list[int] = []
     for res in results:

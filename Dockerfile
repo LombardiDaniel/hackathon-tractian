@@ -9,11 +9,11 @@ WORKDIR /app
 # Add the current directory contents into the container at /app
 
 # Install any needed packages specified in requirements.txt
-COPY src /app
+COPY src/requirements.txt /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install gunicorn
+COPY src /app
 
 # Run app.py when the container launches
 # CMD ["python", "app.py"]
