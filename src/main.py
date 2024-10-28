@@ -54,6 +54,7 @@ asked = []
 
 
 def main():
+    global asked
     question = "como funciona a segurança das prensas?"
     print("Chat com o manual WR22_ID:\n")
     while True:

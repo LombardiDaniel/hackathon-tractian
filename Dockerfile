@@ -13,10 +13,11 @@ COPY src /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN pip install gunicorn
 
 # Run app.py when the container launches
-CMD ["python", "app.py"]
-# CMD ["gunicorn", "--workers=10", "app:app", "-b", "0.0.0.0:8080"]
+# CMD ["python", "app.py"]
+CMD ["gunicorn", "--workers=10", "app:app", "-b", "0.0.0.0:5555"]
 
 # docker build -t sql-injection . -f Dockerfile
 # docker tag sql-injection:latest registry.ctf.secompufscar.com.br/sql-injection:latest
